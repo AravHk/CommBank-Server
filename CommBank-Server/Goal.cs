@@ -1,9 +1,29 @@
-﻿// Goal.cs
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
-public class Goal
+namespace CommBank.Models
 {
+    public class Goal
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
 
-    // ..
+        public string? Name { get; set; }
 
-    public string? Icon { get; set; }
+        public DateTime TargetDate { get; set; }
+
+        public double Balance { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public List<string>? TransactionIds { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public List<string>? TagIds { get; set; }
+
+        public string? Icon { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? UserId { get; set; }
+    }
 }
